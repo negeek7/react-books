@@ -14,11 +14,18 @@ export default function App () {
         setBookList([...bookList, bookObj]);
     }   
 
+    const handleDeleteBook = (id) => {
+        const updateBookList = bookList.filter((book, index) => {
+            return id !== book.id;
+        })
+        setBookList(updateBookList);
+    }
+
     console.log(bookList, "LIST")
 
     return (
         <div>
-            {bookList && bookList.length > 0 && <BookList list={bookList} />}
+            {bookList && bookList.length > 0 && <BookList list={bookList} deleteBook={handleDeleteBook}/>}
             <BookCreate onSubmit={handleBookCreate}/>
         </div>
     )
