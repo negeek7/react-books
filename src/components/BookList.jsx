@@ -2,7 +2,7 @@ import BookCard from './BookCard';
 
 export default function BookList({list}) {
     return (
-        <div>
+        <div className="book-list">
             {
                 list.map((book, index) => {
                     return (

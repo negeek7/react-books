@@ -1,6 +1,6 @@
-export default function BookCard({book}) {
+export default function BookCard({ book }) {
     return (
-        <div>
+        <div className="book-show">
             <p>{book.value}</p>
         </div>
     )
