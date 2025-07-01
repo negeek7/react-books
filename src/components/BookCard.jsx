@@ -1,3 +1,7 @@
-export default function BookCard() {
-    return <div>Book Card</div>
+export default function BookCard({book}) {
+    return (
+        <div>
+            <p>{book.value}</p>
+        </div>
+    )
 }
