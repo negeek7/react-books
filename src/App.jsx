@@ -7,7 +7,6 @@ export default function App () {
     const [bookList, setBookList] = useState([]);
 
     const handleBookCreate = (book) => {
-        console.log(book, "book")
         const bookObj = {};
         bookObj.id = Math.floor(100 + Math.random() * 900);
         bookObj.value = book;
@@ -19,7 +18,6 @@ export default function App () {
 
     return (
         <div>
-
             {bookList && bookList.length > 0 && <BookList list={bookList} />}
             <BookCreate onSubmit={handleBookCreate}/>
         </div>
