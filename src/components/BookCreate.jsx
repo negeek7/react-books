@@ -12,15 +12,16 @@ export default function BookCreate({onSubmit}) {
     const handleBookAdd = (e) => {
         e.preventDefault();
         if(!bookValue) return;
-        setBookValue('');
         onSubmit(bookValue);
+        setBookValue('');
     }
 
     return (
-        <div>
+        <div className="book-create">
+            <h3>Add a book</h3>
             <form onSubmit={handleBookAdd}>
                 <input type="text" value={bookValue} onChange={handleBookInput} />
-                <button onClick={handleBookAdd}>Add</button>
+                <button className="button" onClick={handleBookAdd}>Add</button>
             </form>
         </div>
     )
