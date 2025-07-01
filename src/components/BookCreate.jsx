@@ -1,8 +1,8 @@
+import { useState } from "react";
+
 export default function BookCreate({onSubmit}) {
 
-
     const [bookValue, setBookValue] = useState('');
-
     const handleBookInput = (e) => {
         const value = e.target.value;
         setBookValue(value);
