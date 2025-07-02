@@ -9,7 +9,7 @@ export default function App () {
     const handleBookCreate = (book) => {
         const bookObj = {};
         bookObj.id = Math.floor(100 + Math.random() * 900);
-        bookObj.value = book;
+        bookObj.title = book;
         // book object to update bookList state
         setBookList([...bookList, bookObj]);
     }   
