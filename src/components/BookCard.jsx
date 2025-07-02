@@ -5,10 +5,16 @@ export default function BookCard({ book, deleteBook, editBook }) {
 
     const [showEdit, setShowEdit] = useState(false);
 
+    const handleBookEdit = (value) => {
+        editBook(book, value)
+        setShowEdit(false);
+    }
+    
     let content = <h3>{book.title}</h3>;
     if(showEdit) {
-        content = <BookEdit book={book} onEdit={editBook} setShowEdit={setShowEdit}/>
+        content = <BookEdit book={book} onEdit={handleBookEdit} />
     }
+
     
     return (
         <div className="book-show">

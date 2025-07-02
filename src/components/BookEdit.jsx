@@ -1,14 +1,13 @@
 import { useState } from "react";
 
-export default function BookEdit({ book, onEdit, setShowEdit }) {
+export default function BookEdit({ book, onEdit }) {
 
     const [editValue, setEditValue] = useState(book.title);
 
     return (
             <form className="book-edit" onSubmit={(e) => {
                 e.preventDefault();
-                onEdit(book, editValue);
-                setShowEdit(false);
+                onEdit(editValue);
             }}>
                 <input 
                     className="input"
