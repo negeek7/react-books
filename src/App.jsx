@@ -21,11 +21,22 @@ export default function App () {
         setBookList(updateBookList);
     }
 
+    const handleEditBook = (book, value) => {
+        const updatedList = [...bookList].map((b, index) => {
+            if(b.id === book.id) {
+                b.title = value;
+            }
+            return b;
+        })
+        setBookList(updatedList);
+    }
+
     console.log(bookList, "LIST")
 
     return (
         <div>
-            {bookList && bookList.length > 0 && <BookList list={bookList} deleteBook={handleDeleteBook}/>}
+            {bookList && bookList.length > 0 && 
+                <BookList list={bookList} deleteBook={handleDeleteBook} editBook={handleEditBook}/>}
             <BookCreate onSubmit={handleBookCreate}/>
         </div>
     )
