@@ -24,7 +24,7 @@ export default function App () {
     const handleEditBook = (book, value) => {
         const updatedList = [...bookList].map((b, index) => {
             if(b.id === book.id) {
-                b.title = value;
+                return {...b, title: value};
             }
             return b;
         })
