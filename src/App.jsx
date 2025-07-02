@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import BookCreate from "./components/BookCreate";
 import BookList from "./components/BookList";
-import { fetchBooks } from "./api/api";
+import { createBook, fetchBooks } from "./api/api";
 
 export default function App() {
 
@@ -16,7 +16,8 @@ export default function App() {
         bookObj.id = Math.floor(100 + Math.random() * 900);
         bookObj.title = book;
         // book object to update bookList state
-        setBookList([...bookList, bookObj]);
+        // setBookList([...bookList, bookObj]);
+        createBook(bookObj);
     }
 
     const handleDeleteBook = (id) => {
