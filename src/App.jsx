@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import BookCreate from "./components/BookCreate";
 import BookList from "./components/BookList";
-import { createBook, fetchBooks } from "./api/api";
+import { createBook, fetchBooks, updateBookList } from "./api/api";
 
 export default function App() {
 
@@ -28,13 +28,14 @@ export default function App() {
     }
 
     const handleEditBook = (book, value) => {
-        const updatedList = [...bookList].map((b, index) => {
+        const updatedList = bookList.map((b, index) => {
             if (b.id === book.id) {
                 return { ...b, title: value };
             }
             return b;
         })
         setBookList(updatedList);
+        updateBookList(book, value)
     }
 
     async function getBooks(){
