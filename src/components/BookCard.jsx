@@ -9,10 +9,10 @@ export default function BookCard({ book, deleteBook, editBook }) {
         editBook(book, value)
         setShowEdit(false);
     }
-    
+
     let content = <h3>{book.title}</h3>;
     if(showEdit) {
-        content = <BookEdit book={book} onEdit={handleBookEdit} />
+        content = <BookEdit book={book} onSubmit={handleBookEdit} />
     }
 
     
