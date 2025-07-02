@@ -11,9 +11,11 @@ export default function BookCard({ book, deleteBook, editBook }) {
     }
     return (
         <div className="book-show">
-            <button onClick={() => setShowEdit(true)}>Edit</button>
-            <button onClick={() => deleteBook(book.id)}>Delete</button>
             {content}
+            <div className="actions">
+                <button className="edit" onClick={() => setShowEdit(!showEdit)}>Edit</button>
+                <button className="delete" onClick={() => deleteBook(book.id)}>Delete</button>
+            </div>
         </div>
     )
 }
