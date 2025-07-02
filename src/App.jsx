@@ -1,10 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BookCreate from "./components/BookCreate";
 import BookList from "./components/BookList";
+import { fetchBooks } from "./api/api";
 
 export default function App() {
 
     const [bookList, setBookList] = useState([]);
+
+    useEffect(() => {
+        getBooks();
+    }, []);
 
     const handleBookCreate = (book) => {
         const bookObj = {};
@@ -31,7 +36,10 @@ export default function App() {
         setBookList(updatedList);
     }
 
-    console.log(bookList, "LIST")
+    async function getBooks(){
+        const result = await fetchBooks();
+        setBookList(result);
+    }
 
     return (
         <div className="app">
