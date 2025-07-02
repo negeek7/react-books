@@ -2,7 +2,7 @@ import { useState } from "react";
 import BookCreate from "./components/BookCreate";
 import BookList from "./components/BookList";
 
-export default function App () {
+export default function App() {
 
     const [bookList, setBookList] = useState([]);
 
@@ -12,7 +12,7 @@ export default function App () {
         bookObj.title = book;
         // book object to update bookList state
         setBookList([...bookList, bookObj]);
-    }   
+    }
 
     const handleDeleteBook = (id) => {
         const updateBookList = bookList.filter((book, index) => {
@@ -23,8 +23,8 @@ export default function App () {
 
     const handleEditBook = (book, value) => {
         const updatedList = [...bookList].map((b, index) => {
-            if(b.id === book.id) {
-                return {...b, title: value};
+            if (b.id === book.id) {
+                return { ...b, title: value };
             }
             return b;
         })
@@ -34,10 +34,14 @@ export default function App () {
     console.log(bookList, "LIST")
 
     return (
-        <div>
-            {bookList && bookList.length > 0 && 
-                <BookList list={bookList} deleteBook={handleDeleteBook} editBook={handleEditBook}/>}
-            <BookCreate onSubmit={handleBookCreate}/>
+        <div className="app">
+            {bookList && bookList.length > 0 &&
+                <>
+                    <h1>Reading List</h1>
+                    <BookList list={bookList} deleteBook={handleDeleteBook} editBook={handleEditBook} />
+                </>
+            }
+            <BookCreate onSubmit={handleBookCreate} />
         </div>
     )
 }

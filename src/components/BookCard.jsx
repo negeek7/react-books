@@ -10,7 +10,12 @@ export default function BookCard({ book, deleteBook, editBook }) {
         setShowEdit(false);
     }
 
-    let content = <h3>{book.title}</h3>;
+    let content = (
+        <>
+            <img src={`https://picsum.photos/seed/${book.id}/300/200`} />
+            <h3>{book.title}</h3>
+        </>
+    );
     if(showEdit) {
         content = <BookEdit book={book} onSubmit={handleBookEdit} />
     }
