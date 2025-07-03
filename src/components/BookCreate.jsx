@@ -4,8 +4,7 @@ import { BookContext } from "../context/BookContext";
 export default function BookCreate({onSubmit}) {
 
     const [bookValue, setBookValue] = useState('');
-
-    const {createBook} = useContext(BookContext);
+    const {handleCreateBook} = useContext(BookContext);
     
     const handleBookInput = (e) => {
         const value = e.target.value;
@@ -15,7 +14,7 @@ export default function BookCreate({onSubmit}) {
     const handleBookAdd = (e) => {
         e.preventDefault();
         if(!bookValue) return;
-        createBook(bookValue);
+        handleCreateBook(bookValue);
         setBookValue('');
     }
 

@@ -1,12 +1,14 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import BookEdit from './BookEdit';
+import { BookContext } from '../context/BookContext';
 
 export default function BookCard({ book, deleteBook, editBook }) {
 
     const [showEdit, setShowEdit] = useState(false);
+    const {handleEditBook} = useContext(BookContext);
 
     const handleBookEdit = (value) => {
-        editBook(book, value)
+        handleEditBook(book, value);
         setShowEdit(false);
     }
 

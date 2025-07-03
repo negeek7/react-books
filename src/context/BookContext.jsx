@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { createNewBook, fetchBooks } from "../api/api";
+import { createNewBook, fetchBooks, updateBookList } from "../api/api";
 
 export const BookContext = createContext();
 
@@ -16,13 +16,24 @@ export default function BookContextProvider ({ children }) {
         setBookList(list);
     }
 
-    const createBook = async (title) => {
+    const handleCreateBook = async (title) => {
         const book = await createNewBook({title});
         setBookList([...bookList, book]);
     }
 
+    const handleEditBook = async (book, title) => {
+        const response = await updateBookList(book, title);
+        const updateList = bookList.map((book) => {
+            if(book.id === response.id) {
+                return {...book, title}
+            }
+            return book;
+        })
+        setBookList(updateList);
+    }
+
     return (
-        <BookContext.Provider value={{bookList, createBook}}>
+        <BookContext.Provider value={{bookList, handleCreateBook, handleEditBook}}>
             {children}
         </BookContext.Provider>
     )
