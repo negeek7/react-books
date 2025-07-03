@@ -9,15 +9,13 @@ export default function App() {
 
     useEffect(() => {
         getBooks();
+        console.log(" i ran ")
     }, []);
 
-    const handleBookCreate = (book) => {
-        const bookObj = {};
-        bookObj.id = Math.floor(100 + Math.random() * 900);
-        bookObj.title = book;
+    const handleBookCreate = (title) => {
         // book object to update bookList state
         // setBookList([...bookList, bookObj]);
-        createBook(bookObj);
+        createBook({title});
     }
 
     const handleDeleteBook = (id) => {
