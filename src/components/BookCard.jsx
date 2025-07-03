@@ -5,7 +5,7 @@ import { BookContext } from '../context/BookContext';
 export default function BookCard({ book, deleteBook, editBook }) {
 
     const [showEdit, setShowEdit] = useState(false);
-    const {handleEditBook} = useContext(BookContext);
+    const {handleEditBook, handleDeleteBook} = useContext(BookContext);
 
     const handleBookEdit = (value) => {
         handleEditBook(book, value);
@@ -28,7 +28,7 @@ export default function BookCard({ book, deleteBook, editBook }) {
             <div>{content}</div>
             <div className="actions">
                 <button className="edit" onClick={() => setShowEdit(!showEdit)}>Edit</button>
-                <button className="delete" onClick={() => deleteBook(book.id)}>Delete</button>
+                <button className="delete" onClick={() => handleDeleteBook(book.id)}>Delete</button>
             </div>
         </div>
     )

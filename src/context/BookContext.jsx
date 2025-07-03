@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { createNewBook, fetchBooks, updateBookList } from "../api/api";
+import { createNewBook, deleteBook, fetchBooks, updateBookList } from "../api/api";
 
 export const BookContext = createContext();
 
@@ -32,8 +32,16 @@ export default function BookContextProvider ({ children }) {
         setBookList(updateList);
     }
 
+    const handleDeleteBook = async (id) => {
+        await deleteBook(id);
+        const updateList = bookList.filter(book => {
+            return book.id !== id;
+        })
+        setBookList(updateList);
+    }
+
     return (
-        <BookContext.Provider value={{bookList, handleCreateBook, handleEditBook}}>
+        <BookContext.Provider value={{bookList, handleCreateBook, handleEditBook, handleDeleteBook}}>
             {children}
         </BookContext.Provider>
     )
