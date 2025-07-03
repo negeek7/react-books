@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { BookContext } from "../context/BookContext";
 
-export default function BookCreate({onSubmit}) {
+export default function BookCreate() {
 
     const [bookValue, setBookValue] = useState('');
     const {handleCreateBook} = useContext(BookContext);

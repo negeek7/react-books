@@ -2,7 +2,7 @@ import { useContext, useState } from 'react';
 import BookEdit from './BookEdit';
 import { BookContext } from '../context/BookContext';
 
-export default function BookCard({ book, deleteBook, editBook }) {
+export default function BookCard({ book }) {
 
     const [showEdit, setShowEdit] = useState(false);
     const {handleEditBook, handleDeleteBook} = useContext(BookContext);
@@ -21,7 +21,6 @@ export default function BookCard({ book, deleteBook, editBook }) {
     if(showEdit) {
         content = <BookEdit book={book} onSubmit={handleBookEdit} />
     }
-
     
     return (
         <div className="book-show">

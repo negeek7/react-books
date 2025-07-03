@@ -2,21 +2,18 @@ import { useContext } from 'react';
 import BookCard from './BookCard';
 import { BookContext } from '../context/BookContext';
 
-export default function BookList({list, deleteBook, editBook}) {
+export default function BookList() {
 
     const {bookList} = useContext(BookContext);
-
 
     return (
         <div className="book-list">
             {
-                bookList.map((book, index) => {
+                bookList.map((book) => {
                     return (
                         <BookCard 
                             key={book.id} 
-                            book={book} 
-                            deleteBook={deleteBook}
-                            editBook={editBook}
+                            book={book}
                         />
                     )
                 })
