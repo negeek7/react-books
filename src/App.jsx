@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import BookCreate from "./components/BookCreate";
 import BookList from "./components/BookList";
-import { createBook, fetchBooks, updateBookList } from "./api/api";
+import { createBook, deleteBook, fetchBooks, updateBookList } from "./api/api";
 
 export default function App() {
 
@@ -25,6 +25,7 @@ export default function App() {
             return id !== book.id;
         })
         setBookList(updateBookList);
+        deleteBook(id);
     }
 
     const handleEditBook = (book, value) => {
