@@ -30,9 +30,9 @@ export async function updateBookList(book, title) {
             headers: {
                 "Content-Type": "application/json", // required for json-server to parse the body
             },
-            body: JSON.stringify({title}),
+            body: JSON.stringify({ title }),
         })
-        const data = await response.json(); 
+        const data = await response.json();
         return data;
     } catch (error) {
         console.log(error, "error in updating book list")
@@ -42,10 +42,9 @@ export async function updateBookList(book, title) {
 
 export async function deleteBook(id) {
     try {
-        const response = await fetch(`${API_URL}/${id}`, {
+        await fetch(`${API_URL}/${id}`, {
             method: "DELETE"
         });
-        console.log(response, "response")
     } catch (error) {
         console.log(error, "error in deleting book")
     }

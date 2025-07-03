@@ -23,12 +23,12 @@ export default function App() {
         setBookList([...bookList, book]);
     }
 
-    const handleDeleteBook = (id) => {
+    const handleDeleteBook = async (id) => {
+        await deleteBook(id);
         const updateBookList = bookList.filter((book, index) => {
             return id !== book.id;
         })
         setBookList(updateBookList);
-        deleteBook(id);
     }
 
     const handleEditBook = async (book, title) => {
