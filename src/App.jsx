@@ -12,10 +12,12 @@ export default function App() {
         console.log(" i ran ")
     }, []);
 
-    const handleBookCreate = (title) => {
+    const handleBookCreate = async (title) => {
         // book object to update bookList state
         // setBookList([...bookList, bookObj]);
-        createBook({title});
+        const book = await createBook({title});
+        setBookList([...bookList, book]);
+
     }
 
     const handleDeleteBook = (id) => {

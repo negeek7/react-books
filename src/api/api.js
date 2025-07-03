@@ -15,7 +15,8 @@ export async function createBook(book) {
             },
             body: JSON.stringify(book),
         })
-        console.log("yay")
+        const data = await response.json();
+        return data;
     } catch (error) {
         console.log(errpr, "error in updating book list")
 
@@ -46,6 +47,7 @@ export async function deleteBook(id) {
         const response = await fetch(`${API_URL}/${id}`, {
             method: "DELETE"
         });
+        console.log(response, "response")
     } catch (error) {
         console.log(error, "error in deleting book")
     }
