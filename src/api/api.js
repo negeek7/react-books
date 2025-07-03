@@ -18,10 +18,8 @@ export async function createBook(book) {
         const data = await response.json();
         return data;
     } catch (error) {
-        console.log(errpr, "error in updating book list")
-
+        console.log(error, "error in updating book list")
     }
-
 }
 
 export async function updateBookList(book, title) {
@@ -51,5 +49,4 @@ export async function deleteBook(id) {
     } catch (error) {
         console.log(error, "error in deleting book")
     }
-
 }

@@ -9,15 +9,18 @@ export default function App() {
 
     useEffect(() => {
         getBooks();
-        console.log(" i ran ")
     }, []);
+
+    async function getBooks(){
+        const result = await fetchBooks();
+        setBookList(result);
+    }
 
     const handleBookCreate = async (title) => {
         // book object to update bookList state
         // setBookList([...bookList, bookObj]);
         const book = await createBook({title});
         setBookList([...bookList, book]);
-
     }
 
     const handleDeleteBook = (id) => {
@@ -46,11 +49,6 @@ export default function App() {
         } catch (error) {
             console.log(error, "error in updating book list");
         }
-    }
-
-    async function getBooks(){
-        const result = await fetchBooks();
-        setBookList(result);
     }
 
     return (
