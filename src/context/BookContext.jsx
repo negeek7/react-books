@@ -1,9 +1,9 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 import { createNewBook, deleteBook, fetchBooks, updateBookList } from "../api/api";
 
-export const BookContext = createContext();
+const BookContext = createContext();
 
-export default function BookContextProvider ({ children }) {
+function BookContextProvider ({ children }) {
 
     const [bookList, setBookList] = useState([]);
 
@@ -42,3 +42,6 @@ export default function BookContextProvider ({ children }) {
         </BookContext.Provider>
     )
 }
+
+export {BookContextProvider};
+export default BookContext;
