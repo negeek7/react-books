@@ -23,19 +23,20 @@ export async function createBook(book) {
 
 }
 
-export async function updateBookList(book, value) {
+export async function updateBookList(book, title) {
     try {
         // using url params (id) to update the book
         const response = await fetch(`${API_URL}/${book.id}`, {
-            method: "PATCH",
+            method: "PUT",
             headers: {
                 "Content-Type": "application/json", // required for json-server to parse the body
             },
-            body: JSON.stringify({ title: value }),
+            body: JSON.stringify({title}),
         })
-        console.log("yay")
+        const data = await response.json(); 
+        return data;
     } catch (error) {
-        console.log(errpr, "error in updating book list")
+        console.log(error, "error in updating book list")
     }
 
 }

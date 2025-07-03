@@ -26,15 +26,24 @@ export default function App() {
         deleteBook(id);
     }
 
-    const handleEditBook = (book, value) => {
-        const updatedList = bookList.map((b, index) => {
-            if (b.id === book.id) {
-                return { ...b, title: value };
-            }
-            return b;
-        })
-        setBookList(updatedList);
-        updateBookList(book, value)
+    const handleEditBook = async (book, title) => {
+        // make the api call to update the book in the server
+        // get the response from the server (the updated object)
+        // udpate the local state with the new object from response
+        try {
+            const response = await updateBookList(book, title);
+    
+            const updatedList = bookList.map((book) => {
+                if(book.id === response.id) {
+                    return response;
+                }
+                return book;
+            })
+            console.log(updatedList, "updatedList")
+            setBookList(updatedList);
+        } catch (error) {
+            console.log(error, "error in updating book list");
+        }
     }
 
     async function getBooks(){
