@@ -6,7 +6,7 @@ export async function fetchBooks() {
     return data;
 }
 
-export async function createBook(book) {
+export async function createNewBook(book) {
     try {
         const response = await fetch(API_URL, {
             method: "POST",

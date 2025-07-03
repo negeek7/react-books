@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import BookCreate from "./components/BookCreate";
 import BookList from "./components/BookList";
-import { createBook, deleteBook, fetchBooks, updateBookList } from "./api/api";
+import { createNewBook, deleteBook, fetchBooks, updateBookList } from "./api/api";
 
 export default function App() {
 
@@ -19,7 +19,7 @@ export default function App() {
     const handleBookCreate = async (title) => {
         // book object to update bookList state
         // setBookList([...bookList, bookObj]);
-        const book = await createBook({title});
+        const book = await createNewBook({title});
         setBookList([...bookList, book]);
     }
 
