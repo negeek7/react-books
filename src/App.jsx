@@ -6,16 +6,16 @@ import { BookContext } from "./context/BookContext";
 
 export default function App() {
 
-    const {bookList} = useContext(BookContext)
+    const { getBooks } = useContext(BookContext)
+
+    useEffect(() => {
+        getBooks();
+    }, [])
 
     return (
         <div className="app">
-            {bookList && bookList.length > 0 &&
-                <>
-                    <h1>Reading List</h1>
-                    <BookList />
-                </>
-            }
+            <h1>Reading List</h1>
+            <BookList />
             <BookCreate />
         </div>
     )

@@ -7,10 +7,6 @@ export default function BookContextProvider ({ children }) {
 
     const [bookList, setBookList] = useState([]);
 
-    useEffect(() => {
-        getBooks();
-    }, [])
-
     const getBooks = async () => {
         const list = await fetchBooks();
         setBookList(list);
@@ -41,7 +37,7 @@ export default function BookContextProvider ({ children }) {
     }
 
     return (
-        <BookContext.Provider value={{bookList, handleCreateBook, handleEditBook, handleDeleteBook}}>
+        <BookContext.Provider value={{bookList, getBooks, handleCreateBook, handleEditBook, handleDeleteBook}}>
             {children}
         </BookContext.Provider>
     )
