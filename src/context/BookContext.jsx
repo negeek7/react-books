@@ -12,6 +12,8 @@ function BookContextProvider ({ children }) {
         setBookList(list);
     }, [])
 
+    // const getBooksCallback = getBooks();
+
     const handleCreateBook = async (title) => {
         const book = await createNewBook({title});
         setBookList([...bookList, book]);
